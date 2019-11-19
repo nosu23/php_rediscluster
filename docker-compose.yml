@@ -1,0 +1,14 @@
+  version: '3'
+  services:
+    cluster-test-app:
+      build: app
+      container_name: cluster-test-app
+      volumes:
+        - ./:/var/www/html
+      depends_on:
+        - redis
+    redis:
+      build: redis
+      container_name: redis
+      volumes:
+        - ./redis/data:/etc/redis
